@@ -18,13 +18,14 @@ age_bins = [0,20,40,60,80,100]
 train['ageBin'] = pd.cut(train['age'], bins=age_bins)
 
 categories = ['job', 'marital', 'education', 'loan', 'ageBin']
-for category in categories:
-    yes_no_counts = train.groupby([category] + ['y']).size().unstack().fillna(0)
+header_text = ["Count of y by Job Type", "Count of y by Marital Status", "Count of y by Education Status", "Count of y by Loan", "Count of y by Age Group"]
+for i in range(len(categories)):
+    yes_no_counts = train.groupby([categories[i]] + ['y']).size().unstack().fillna(0)
     yes_no_counts.columns = ['no', 'yes']
     ax = yes_no_counts.plot(kind='barh', stacked=False, figsize=(12, 8), color=['lightblue', 'lightcoral'])
-    plt.title('Number of Yes and No for y based on different categories')
+    plt.title(header_text[i])
     plt.xlabel('Count')
-    plt.ylabel('Categories')
+    plt.ylabel('Type')
     plt.legend(title='y')
 
     for container in ax.containers:
