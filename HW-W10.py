@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 
 
-train = pd.read_csv(r"C:\Users\Class\Desktop\train.csv", sep=';')
-test = pd.read_csv(r"C:\Users\Class\Desktop\test.csv", sep=';')
+train = pd.read_csv(r"Data/train.csv", sep=';')
+test = pd.read_csv(r"Data/test.csv", sep=';')
 
 print(f"Train null values: {train.isnull().sum().sum()}")
 print(f"Test null values: {test.isnull().sum().sum()}")

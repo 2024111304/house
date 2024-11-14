@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
 
 # Read the CSV file, skipping the first row and setting the correct column names
-data = pd.read_csv(r"C:\Users\Class\Desktop\boston_house_prices.csv", header=1)
+data = pd.read_csv(r"Data/boston_house_prices.csv", header=1)
 print(pd.isnull(data).sum().sum()) # Number of null cells
 
 # Convert all columns to numeric
