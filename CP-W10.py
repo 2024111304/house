@@ -25,15 +25,16 @@ plt.xlabel('House Price')
 plt.ylabel('Frequency')
 plt.show()
 
-data['RM'] = data['RM'].round()
+data['RM'] = data['RM'].round() # Round the RM column (as they are floats and wouldn't play nicely with groupby)
 grouped_data = data.groupby('RM')
 for i in grouped_data.groups:
-    plt.bar(i, grouped_data.get_group(i)["MEDV"].mean(), color='blue')
+    plt.bar(i, grouped_data.get_group(i)["MEDV"].mean(), color='blue') # Plot the mean of the MEDV column for each RM value
 plt.title('Distribution of Boston Housing Prices Group by RM')
 plt.xlabel('House Price')
 plt.ylabel('Frequency')
 plt.show()
 
+# Run Linear Regression on the data
 x_train, x_test, y_train, y_test = train_test_split(data.drop('MEDV', axis=1), data['MEDV'], test_size=0.2, random_state=0)
 model = LinearRegression()
 model.fit(x_train, y_train)
@@ -42,6 +43,7 @@ mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
+# Print results
 print('Mean Squared Error:', mse)
 print('Root Mean Squared Error:', rmse)
 print('R^2:', r2)
