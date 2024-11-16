@@ -31,7 +31,6 @@ for i in range(len(categories)):
     yes_no_counts.columns = ['no', 'yes'] # 重命名列，顯示為 "yes"/"no" 而非數字
     ax = yes_no_counts.plot(kind='barh', stacked=False, figsize=(12, 8), color=['lightblue', 'lightcoral']) # 繪製水平直方圖
     plt.title(header_text[i])  # 設置標題
-    plt.title(header_text[i]) 
     plt.xlabel('Count') # 設置 x 軸標籤
     plt.ylabel('Type') # 設置 y 軸標籤
     plt.legend(title='y') # 添加圖例
@@ -46,6 +45,7 @@ train.loan.replace(('yes', 'no'), (1, 0), inplace=True) # 訓練數據的 "yes" 
 test.loan.replace(('yes', 'no'), (1, 0), inplace=True) # 測試數據同樣處理
 # 選擇建模需要的欄位
 selected_columns = ['age', 'balance', 'loan', 'y'] # 定義需要的列
+new_train = train[selected_columns] # 過濾訓練數據
 new_test = test[selected_columns] # 過濾測試數據
 # 分割數據為訓練集和測試集
 x_train, x_test, y_train, y_test = train_test_split(new_train.drop('y', axis=1), new_train['y'], test_size=0.2, random_state=0) # 分割數據
