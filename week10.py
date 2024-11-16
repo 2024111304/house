@@ -37,23 +37,23 @@ print(f"中位數房價: {median_price}")
 
 # 繪製房價分布直方圖 (以10為區間)
 plt.hist(data['PRICE'], bins=range(int(min_price), int(max_price) + 10, 10), edgecolor='k')
-plt.xlabel('房價 (千美元)')
-plt.ylabel('頻率')
-plt.title('房價分布')
+plt.xlabel('House Price')
+plt.ylabel('Frequency')
+plt.title('Distribution of House Prices')
 plt.show()
 
 # 四捨五入 RM 到整數
 data['RM_rounded'] = data['RM'].round()
 
-# 使用 groupby 分析不同 RM 值的平均房價
+# 使用 groupby 分析Distribution of House Prices
 rm_price_mean = data.groupby('RM_rounded')['PRICE'].mean()
-print("\n不同 RM 值的平均房價：\n", rm_price_mean)
+print("\nDistribution of House Prices：\n", rm_price_mean)
 
 # 繪製 RM 值與平均房價的直方圖
 rm_price_mean.plot(kind='bar', edgecolor='k')
-plt.xlabel('平均房間數 (RM)')
-plt.ylabel('平均房價 (千美元)')
-plt.title('不同 RM 值的平均房價')
+plt.xlabel('House Price')
+plt.ylabel('Frequency')
+plt.title('Distribution of House Prices')
 plt.show()
 
 # 建立線性回歸模型並進行房價預測
